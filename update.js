@@ -1,5 +1,6 @@
 import fs from 'fs';
 import config from './config.js';
+import path from 'path';
 
 function update(resultsByBottle) {
     const newStores = {};
@@ -30,7 +31,7 @@ function update(resultsByBottle) {
         stores: newStores,
     };
 
-    fs.writeFileSync(`${__dirname}/config.js`, `export default ${JSON.stringify(updatedConfig)}`);
+    fs.writeFileSync(`${path.dirname(__filename)}/config.js`, `export default ${JSON.stringify(updatedConfig)}`);
 }
 
 export default update;
