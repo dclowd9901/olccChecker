@@ -30,7 +30,7 @@ function update(resultsByBottle) {
         stores: newStores,
     };
 
-    fs.writeFileSync('./config.js', `export default ${JSON.stringify(updatedConfig)}`);
+    fs.writeFileSync(`${__dirname}/config.js`, `export default ${JSON.stringify(updatedConfig)}`);
 }
 
 export default update;
