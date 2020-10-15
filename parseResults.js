@@ -26,7 +26,7 @@ function parser(result) {
         }
     }
     
-    resultRows.map(row => {
+    return resultRows.map(row => {
         const allCells = row.querySelectorAll('td');
         const storeNumber = allCells[0].querySelector('span').innerText;
         const city = allCells[1].innerText;
