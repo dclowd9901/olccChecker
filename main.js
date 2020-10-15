@@ -1,6 +1,12 @@
 import ageVerification from './ageVerification.js';
 import lookup from './lookup.js';
 
-ageVerification().then(() => {
-    lookup();
-})
+const ONE_MINUTE = 60000;
+
+const jitter = Math.floor(Math.random() * ONE_MINUTE * 10);
+console.log(`Jittering for ${jitter / ONE_MINUTE} minutes...`);
+setTimeout(() => {
+    ageVerification().then(() => {
+        lookup();
+    });
+}, jitter);
