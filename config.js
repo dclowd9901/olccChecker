@@ -1,1 +1,0 @@
-export default {"bottles":["8722B","2170B","4087B"],"location":"97220","radius":10,"directory":{"8722B":"Weller 107","2170B":"Blanton's Single Barrel BB","4087B":"Nikka Coffey Malt"},"stores":{}}
