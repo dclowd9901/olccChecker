@@ -7,8 +7,26 @@ function parser(result) {
 
     const parsedHtml = parse(result);
     const resultRows = parsedHtml.querySelectorAll('.alt-row').concat(parsedHtml.querySelectorAll('.row'));
+    const [oneResult] = parsedHtml.querySelectorAll('#location-display');
 
-    return resultRows.map(row => {
+    if (oneResult.length) {
+        const [inStock] = parsedHtml.querySelectorAll('#in-stock').innerText;
+        const [quantity] = parseInt(inStock.match('(\d)'), 10);
+        const storeInfo = oneResult.querySelector('h2').innerText;
+        const [storeInfoMatch, storeNumber, city] = storeInfo.match(/Store\s*(\d+)\:\s*([a-zA-Z]+)/i);
+        const [rawAddress, telephone] = oneResult.querySelectorAll('p');
+        const address = rawAddress.innerText;
+
+        return {
+            storeNumber,
+            city,
+            address,
+            telephone,
+            quantity,
+        }
+    }
+    
+    resultRows.map(row => {
         const allCells = row.querySelectorAll('td');
         const storeNumber = allCells[0].querySelector('span').innerText;
         const city = allCells[1].innerText;

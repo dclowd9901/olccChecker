@@ -2,7 +2,6 @@ import getCookie from './getCookie.js';
 import config from './config.js';
 import querystring from 'querystring';
 import http from 'http';
-import fs from 'fs';
 import parse from './parseResults.js';
 import compare from './compare.js';
 import update from './update.js';
@@ -44,7 +43,7 @@ async function run() {
 
         const req = http.request(options, (res) => {
             if (res.statusCode >= 300 && res.statusCode < 400) {
-                launchRequest(res.headers.location);
+                launchRequest(res.headers.location.replace(/\s+/, ''));
             } else {
                 res.setEncoding('utf8');
                 let chunks = '';
@@ -58,7 +57,7 @@ async function run() {
                     const result = parse(chunks);
                     resultsByBottle.push({
                         bottle: bottles[index],
-                        availableStores: result,
+                        availableStores: result || [],
                     });
                     index++;
 
