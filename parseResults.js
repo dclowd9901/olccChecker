@@ -16,7 +16,7 @@ function parser(result) {
         const [storeInfoMatch, storeNumber, city] = storeInfo.match(/Store\s*(\d+)\:\s*([a-zA-Z]+)/i);
         const [rawAddress, rawTelephone] = oneResult.querySelectorAll('p');
         const telephone = rawTelephone.innerText;
-        const address = rawAddress.innerText.replace(/[\n\r\t]/gi, '');
+        const address = rawAddress.innerText.replace(/[\n\r\t]/gi, ' ');
 
         return [{
             storeNumber,
