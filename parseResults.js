@@ -9,21 +9,22 @@ function parser(result) {
     const resultRows = parsedHtml.querySelectorAll('.alt-row').concat(parsedHtml.querySelectorAll('.row'));
     const [oneResult] = parsedHtml.querySelectorAll('#location-display');
 
-    if (oneResult.length) {
-        const [inStock] = parsedHtml.querySelectorAll('#in-stock').innerText;
-        const [quantity] = parseInt(inStock.match('(\d)'), 10);
+    if (oneResult) {
+        const inStock = parsedHtml.querySelectorAll('#in-stock')[0].innerText;
+        const quantity = parseInt(inStock.match(/\d+/)[0], 10);
         const storeInfo = oneResult.querySelector('h2').innerText;
         const [storeInfoMatch, storeNumber, city] = storeInfo.match(/Store\s*(\d+)\:\s*([a-zA-Z]+)/i);
-        const [rawAddress, telephone] = oneResult.querySelectorAll('p');
-        const address = rawAddress.innerText;
+        const [rawAddress, rawTelephone] = oneResult.querySelectorAll('p');
+        const telephone = rawTelephone.innerText;
+        const address = rawAddress.innerText.replace(/[\n\r\t]/gi, '');
 
-        return {
+        return [{
             storeNumber,
             city,
             address,
             telephone,
             quantity,
-        }
+        }]
     }
     
     return resultRows.map(row => {

@@ -9,4 +9,4 @@ setTimeout(() => {
     ageVerification().then(() => {
         lookup();
     });
-}, jitter);
+}, process.env.DEVELOPMENT ? 0 : jitter);
