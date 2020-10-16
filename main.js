@@ -1,5 +1,8 @@
+import dotenv from 'dotenv';
 import ageVerification from './ageVerification.js';
 import lookup from './lookup.js';
+
+dotenv.config();
 
 const ONE_MINUTE = 60000;
 
