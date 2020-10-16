@@ -1,5 +1,5 @@
 import http from 'http';
-import querystring from 'querystring';
+import { getDateTimePST } from './date.js';
 
 /* HEADERS EXAMPLE
 
@@ -41,7 +41,7 @@ function getCookie() {
             });
     
             res.on('end', () => {
-                console.log(`Got cookie at: ${new Date()}`);
+                console.log(`Got cookie at: ${getDateTimePST()}`);
             });
         });
     

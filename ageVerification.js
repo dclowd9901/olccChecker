@@ -1,10 +1,7 @@
 import http from 'http';
 import querystring from 'querystring';
 import getCookie from './getCookie.js';
-
-/* POST DATA
-btnSubmit: I'm 21 or older
-*/
+import { getDateTimePST } from './date.js';
 
 async function run() {
     const COOKIE = await getCookie();
@@ -40,7 +37,7 @@ async function run() {
     const req = http.request(options, (res) => {
         res.on('data', () => {});
         res.on('end', () => {
-            console.log(`Verified age at: ${new Date()}`);
+            console.log(`Verified age at: ${getDateTimePST()}`);
         });
     });
 
