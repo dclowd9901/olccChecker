@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 import ageVerification from './ageVerification.js';
 import lookup from './lookup.js';
+import { __dirname } from './globals.js';
 
-dotenv.config();
+dotenv.config({ path: `${__dirname}/.env`});
 
 const ONE_MINUTE = 60000;
 
