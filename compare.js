@@ -14,7 +14,7 @@ function compare(resultsByBottle) {
             if (!stores[storeNumber] || !stores[storeNumber].bottles[bottle]) {
                 notifications.push(`The store at ${address} in ${city} has ${quantity} bottle${quantity > 1 ? 's' : ''} of ${directory[bottle]} from having none before. Call them at ${telephone}.`);
             } else if (quantity > stores[storeNumber].bottles[bottle]) {
-                notifications.push(`The store at ${address} in ${city} has ${quantity} bottle${quantity > 1 ? 's' : ''} of ${directory[bottle]}, ${quantity - stores[storeNumber][bottle]} more than when last checked. Call them at ${telephone}.`);
+                notifications.push(`The store at ${address} in ${city} has ${quantity} bottle${quantity > 1 ? 's' : ''} of ${directory[bottle]}, ${quantity - stores[storeNumber].bottles[bottle]} more than when last checked. Call them at ${telephone}.`);
             }
         });
     });
