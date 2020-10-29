@@ -33,7 +33,7 @@ function parser(result) {
         const city = allCells[1].innerText;
         const address = allCells[2].innerText;
         const telephone = allCells[4].innerText;
-        const quantity = allCells[6].innerText;
+        const quantity = parseInt(allCells[6].innerText, 10);
 
         return {
             storeNumber,
